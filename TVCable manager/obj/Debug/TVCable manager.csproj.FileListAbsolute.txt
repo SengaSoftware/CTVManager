@@ -1,0 +1,11 @@
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable manager.csprojResolveAssemblyReference.cache
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable_manager.Properties.Resources.resources
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable manager.csproj.GenerateResource.Cache
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable manager.csproj.CoreCompileInputs.cache
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\bin\Debug\TVCable manager.exe.config
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\bin\Debug\TVCable manager.exe
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\bin\Debug\TVCable manager.pdb
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable manager.exe
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable manager.pdb
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable_manager.edit.resources
+C:\Users\ejacwro\source\repos\TVCable manager\TVCable manager\obj\Debug\TVCable_manager.mainForm.resources

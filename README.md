@@ -1,0 +1,1 @@
+This is sample C# SOAP client made for educational purposes.

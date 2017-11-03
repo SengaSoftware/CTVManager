@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ctvcentral.vipserv.org/soap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="CTVBackend" targetNamespace="http://ctvcentral.vipserv.org/soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://ctvcentral.vipserv.org/soap">
+      <xsd:complexType name="ArrayOftvOffer">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:tvOffer[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="tvOffer">
+        <xsd:all>
+          <xsd:element name="id" nillable="true" type="xsd:int" />
+          <xsd:element name="offerActivationPrice" nillable="true" type="xsd:double" />
+          <xsd:element name="offerCurrency" nillable="true" type="xsd:string" />
+          <xsd:element name="offerDescription" nillable="true" type="xsd:string" />
+          <xsd:element name="offerMonthlyLength" nillable="true" type="xsd:int" />
+          <xsd:element name="offerMonthlyPrice" nillable="true" type="xsd:double" />
+          <xsd:element name="offerName" nillable="true" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getOffersIn" />
+  <wsdl:message name="getOffersOut">
+    <wsdl:part name="return" type="tns:ArrayOftvOffer" />
+  </wsdl:message>
+  <wsdl:message name="addOfferIn">
+    <wsdl:part name="offer" type="tns:tvOffer" />
+  </wsdl:message>
+  <wsdl:message name="addOfferOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateOfferIn">
+    <wsdl:part name="offer" type="tns:tvOffer" />
+  </wsdl:message>
+  <wsdl:message name="updateOfferOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="removeOfferIn">
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="removeOfferOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="CTVBackendPort">
+    <wsdl:operation name="getOffers">
+      <documentation>Returns list of tvOffers</documentation>
+      <wsdl:input message="tns:getOffersIn" />
+      <wsdl:output message="tns:getOffersOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addOffer">
+      <documentation>Creates new offer</documentation>
+      <wsdl:input message="tns:addOfferIn" />
+      <wsdl:output message="tns:addOfferOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOffer">
+      <documentation>Updates offer or creates new one if not found</documentation>
+      <wsdl:input message="tns:updateOfferIn" />
+      <wsdl:output message="tns:updateOfferOut" />
+    </wsdl:operation>
+    <wsdl:operation name="removeOffer">
+      <documentation>Removes offer</documentation>
+      <wsdl:input message="tns:removeOfferIn" />
+      <wsdl:output message="tns:removeOfferOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CTVBackendBinding" type="tns:CTVBackendPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getOffers">
+      <soap:operation soapAction="http://ctvcentral.vipserv.org/soap#getOffers" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOffer">
+      <soap:operation soapAction="http://ctvcentral.vipserv.org/soap#addOffer" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOffer">
+      <soap:operation soapAction="http://ctvcentral.vipserv.org/soap#updateOffer" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOffer">
+      <soap:operation soapAction="http://ctvcentral.vipserv.org/soap#removeOffer" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://ctvcentral.vipserv.org/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CTVBackendService">
+    <wsdl:port name="CTVBackendPort" binding="tns:CTVBackendBinding">
+      <soap:address location="http://ctvcentral.vipserv.org/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
