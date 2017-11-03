@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,38 @@ namespace TVCable_manager
 
         private List<ServiceReference.tvOffer> list = new List<ServiceReference.tvOffer>();
         public ServiceReference.CTVBackendPortClient service = new ServiceReference.CTVBackendPortClient();
+
+        async private void reload()
+        {
+            reloadButton.Enabled = false;
+            loadingLabel.Visible = true;
+
+            try
+            {
+                
+                //list.AddRange(service.getOffers());               
+
+                list.AddRange(await service.getOffersAsync());
+
+                dataGridView1.DataSource = list;
+                dataGridView1.Update();
+                dataGridView1.ClearSelection();
+                reloadButton.Enabled = true;
+                loadingLabel.Visible = false;
+
+                ;
+
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Błąd połączenia z serwerem " + e.Message);
+                reloadButton.Enabled = true;
+                loadingLabel.Visible = false;
+            }
+
+
+        }
         public mainForm()
         {
             InitializeComponent();
@@ -64,18 +97,7 @@ namespace TVCable_manager
             list.Clear();
             dataGridView1.DataSource = typeof(List<ServiceReference.tvOffer>);
             dataGridView1.Update();
-            try
-            {
-                list.AddRange(service.getOffers());
-
-                dataGridView1.DataSource = list;
-                dataGridView1.Update();
-                dataGridView1.ClearSelection();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Błąd połączenia z serwerem "+e.Message);
-            }
+            reload();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
